@@ -3,6 +3,7 @@ description = "A simple parser and serializer for Scoop shims"
 edition = "2021"
 license = "Apache-2.0"
 name = "scoop-shims"
+repository = "https://github.com/winpax/scoop-shim/tree/trunk"
 version = "0.1.0"
 
 [dependencies]
