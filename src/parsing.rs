@@ -80,4 +80,32 @@ mod tests {
         let unquoted_string = parse_possible_string("path");
         assert_eq!(unquoted_string, "path");
     }
+
+    #[test]
+    fn test_path_parsing() {
+        let path = parse_path("<SCOOP_PATH>\\apps\\sfsu-beta\\current\\sfsu.exe");
+        assert_eq!(
+            path,
+            // Mix and match slashes to make sure it works on all platforms
+            PathBuf::from("<SCOOP_PATH>/apps/sfsu-beta\\current\\sfsu.exe")
+        );
+    }
+
+    #[test]
+    fn test_args_parsing() {
+        let args = parse_args("search --installed");
+        assert_eq!(args, vec!["search".to_string(), "--installed".to_string()]);
+    }
+
+    #[test]
+    fn test_parse_line() {
+        let line = "path = \"<SCOOP_PATH>\\apps\\sfsu-beta\\current\\sfsu.exe\"";
+
+        let Some((key, value)) = parse_line(line).unwrap() else {
+            panic!("parse_line should return a Some");
+        };
+
+        assert_eq!(key, "path");
+        assert_eq!(value, "<SCOOP_PATH>\\apps\\sfsu-beta\\current\\sfsu.exe");
+    }
 }
