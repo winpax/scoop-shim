@@ -73,8 +73,75 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_parse_shim() {
-        unimplemented!()
+    fn test_parse_args_quoted() {
+        let args_quoted_shim = Shim {
+            path: PathBuf::from("<SCOOP_PATH>\\apps\\sfsu-beta\\current\\sfsu.exe"),
+            args: vec!["search".to_string(), "--installed".to_string()],
+        };
+
+        let args_quoted_shim_str = include_str!("../tests/fixtures/args_quoted.shim");
+
+        let parsed_shim = Shim::from_str(args_quoted_shim_str).unwrap();
+
+        assert_eq!(parsed_shim, args_quoted_shim);
+    }
+
+    #[test]
+    fn test_parse_args_quoted_no_comment() {
+        let args_quoted_shim = Shim {
+            path: PathBuf::from("<SCOOP_PATH>\\apps\\sfsu-beta\\current\\sfsu.exe"),
+            args: vec!["search".to_string(), "--installed".to_string()],
+        };
+
+        let args_quoted_shim_str = include_str!("../tests/fixtures/args_quoted_no_comment.shim");
+
+        let parsed_shim = Shim::from_str(args_quoted_shim_str).unwrap();
+
+        assert_eq!(parsed_shim, args_quoted_shim);
+    }
+
+    #[test]
+    fn test_parse_no_args_quoted_no_comment() {
+        let no_args_quoted_shim = Shim {
+            path: PathBuf::from("<SCOOP_PATH>\\apps\\sfsu-beta\\current\\sfsu.exe"),
+            args: vec![],
+        };
+
+        let no_args_quoted_shim_str =
+            include_str!("../tests/fixtures/no_args_quoted_no_comment.shim");
+
+        let parsed_shim = Shim::from_str(no_args_quoted_shim_str).unwrap();
+
+        assert_eq!(parsed_shim, no_args_quoted_shim);
+    }
+
+    #[test]
+    fn test_parse_no_args_quoted() {
+        let no_args_quoted_shim = Shim {
+            path: PathBuf::from("<SCOOP_PATH>\\apps\\sfsu-beta\\current\\sfsu.exe"),
+            args: vec![],
+        };
+
+        let no_args_quoted_shim_str = include_str!("../tests/fixtures/no_args_quoted.shim");
+
+        let parsed_shim = Shim::from_str(no_args_quoted_shim_str).unwrap();
+
+        assert_eq!(parsed_shim, no_args_quoted_shim);
+    }
+
+    #[test]
+    fn test_parse_args_quoted_comment_line_breaks() {
+        let args_quoted_shim = Shim {
+            path: PathBuf::from("<SCOOP_PATH>\\apps\\sfsu-beta\\current\\sfsu.exe"),
+            args: vec!["search".to_string(), "--installed".to_string()],
+        };
+
+        let args_quoted_str =
+            include_str!("../tests/fixtures/args_quoted_comment_line_breaks.shim");
+
+        let parsed_shim = Shim::from_str(args_quoted_str).unwrap();
+
+        assert_eq!(parsed_shim, args_quoted_shim);
     }
 
     #[test]

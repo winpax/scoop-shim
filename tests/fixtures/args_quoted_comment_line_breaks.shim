@@ -1,0 +1,6 @@
+# Path is quoted but args are unquoted
+path = "<SCOOP_PATH>\apps\sfsu-beta\current\sfsu.exe"
+
+# Middle comment
+
+args = search --installed
