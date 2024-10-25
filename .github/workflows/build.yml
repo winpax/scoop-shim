@@ -47,16 +47,11 @@ jobs:
           lfs: true
       - uses: Swatinem/rust-cache@v2.7.5
 
-      - name: Install and setup Scoop
-        uses: MinoruSekine/setup-scoop@v4
-        with:
-          buckets: extras java
-
       - name: Install Rust
         uses: dtolnay/rust-toolchain@stable
 
       - name: Build and Test
-        run: cargo test --features beta
+        run: cargo test --all-features
 
   build:
     strategy:

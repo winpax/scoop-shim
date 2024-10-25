@@ -18,14 +18,6 @@ jobs:
         with:
           lfs: true
 
-      - name: Install and setup Scoop
-        uses: MinoruSekine/setup-scoop@v4
-        with:
-          buckets: extras java
-
-      - name: Cleanup Scoop install
-        run: rm install.ps1
-
       - name: Run tests
         run: cargo test --verbose
       - name: Publish to crates.io
