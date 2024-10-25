@@ -23,17 +23,20 @@ struct Line<'a> {
 }
 
 impl<'a> Line<'a> {
-    fn from_shim(shim: &'a Shim) -> [Self; 2] {
-        [
-            Line {
-                key: "path",
-                value: shim.path().to_string_lossy(),
-            },
-            Line {
+    fn from_shim(shim: &'a Shim) -> Vec<Self> {
+        let mut lines = vec![Line {
+            key: "path",
+            value: shim.path().to_string_lossy(),
+        }];
+
+        if !shim.args().is_empty() {
+            lines.push(Line {
                 key: "args",
                 value: Cow::Owned(shim.args().join(" ")),
-            },
-        ]
+            });
+        }
+
+        lines
     }
 }
 
