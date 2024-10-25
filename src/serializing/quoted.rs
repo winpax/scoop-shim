@@ -6,10 +6,6 @@ pub(crate) struct EscapedString<'a> {
 }
 
 impl<'a> EscapedString<'a> {
-    pub(crate) fn quote(&mut self) {
-        self.quoted = true;
-    }
-
     pub(crate) fn to_string(&'a self) -> Cow<'a, str> {
         if self.quoted {
             Cow::Owned(format!("\"{}\"", self.value))
