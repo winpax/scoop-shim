@@ -73,6 +73,11 @@ mod tests {
     use super::*;
 
     #[test]
+    fn test_parse_shim() {
+        unimplemented!()
+    }
+
+    #[test]
     fn test_parse_possible_string() {
         let quoted_string = parse_possible_string("\"path\"");
         assert_eq!(quoted_string, "path");
