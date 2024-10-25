@@ -65,7 +65,9 @@ fn parse_path(path: &str) -> PathBuf {
 }
 
 fn parse_args(args: &str) -> Vec<String> {
-    args.split(' ').map(|s| s.to_string()).collect()
+    args.split(' ')
+        .map(std::string::ToString::to_string)
+        .collect()
 }
 
 #[cfg(test)]

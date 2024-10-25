@@ -1,6 +1,6 @@
 use std::{path::PathBuf, str::FromStr};
 
-use scoop_shims::Shim;
+use scoop_shim::Shim;
 
 #[test]
 fn test_parse_args_quoted_comment_line_breaks() {

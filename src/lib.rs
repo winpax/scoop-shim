@@ -1,3 +1,4 @@
+#![doc = include_str!("../README.md")]
 #![warn(
     clippy::all,
     clippy::pedantic,
@@ -10,7 +11,10 @@
 mod parsing;
 mod serializing;
 
-use std::{path::PathBuf, str::FromStr};
+use std::{
+    path::{Path, PathBuf},
+    str::FromStr,
+};
 
 #[derive(Debug, thiserror::Error)]
 pub enum Error {
@@ -29,7 +33,7 @@ impl Shim {
         Self { path, args }
     }
 
-    pub fn path(&self) -> &PathBuf {
+    pub fn path(&self) -> &Path {
         &self.path
     }
 
