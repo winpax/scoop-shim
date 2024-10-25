@@ -1,6 +1,7 @@
 [package]
 description = "A simple parser and serializer for Scoop shims"
 edition = "2021"
+include = ["src", "README.md", "LICENSE"]
 license = "Apache-2.0"
 name = "scoop-shim"
 repository = "https://github.com/winpax/scoop-shim/tree/trunk"
