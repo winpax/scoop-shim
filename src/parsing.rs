@@ -160,8 +160,7 @@ mod tests {
         let path = parse_path("<SCOOP_PATH>\\apps\\sfsu-beta\\current\\sfsu.exe");
         assert_eq!(
             path,
-            // Mix and match slashes to make sure it works on all platforms
-            PathBuf::from("<SCOOP_PATH>/apps/sfsu-beta\\current\\sfsu.exe")
+            PathBuf::from("<SCOOP_PATH>\\apps\\sfsu-beta\\current\\sfsu.exe")
         );
     }
 
