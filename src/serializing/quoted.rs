@@ -1,11 +1,11 @@
 use std::borrow::Cow;
 
-pub(crate) struct Quoted<'a> {
+pub(crate) struct EscapedString<'a> {
     pub(crate) value: Cow<'a, str>,
     pub(crate) quoted: bool,
 }
 
-impl<'a> Quoted<'a> {
+impl<'a> EscapedString<'a> {
     pub(crate) fn quote(&mut self) {
         self.quoted = true;
     }
@@ -20,9 +20,23 @@ impl<'a> Quoted<'a> {
             }
         }
     }
+
+    pub(crate) fn quoted(self) -> Self {
+        Self {
+            quoted: true,
+            ..self
+        }
+    }
+
+    pub(crate) fn unquoted(self) -> Self {
+        Self {
+            quoted: false,
+            ..self
+        }
+    }
 }
 
-impl<'a> From<Cow<'a, str>> for Quoted<'a> {
+impl<'a> From<Cow<'a, str>> for EscapedString<'a> {
     fn from(value: Cow<'a, str>) -> Self {
         Self {
             value,
@@ -31,13 +45,13 @@ impl<'a> From<Cow<'a, str>> for Quoted<'a> {
     }
 }
 
-impl<'a> From<&'a str> for Quoted<'a> {
+impl<'a> From<&'a str> for EscapedString<'a> {
     fn from(value: &'a str) -> Self {
         Cow::Borrowed(value).into()
     }
 }
 
-impl<'a> From<String> for Quoted<'a> {
+impl<'a> From<String> for EscapedString<'a> {
     fn from(value: String) -> Self {
         Cow::<'a, str>::Owned(value).into()
     }

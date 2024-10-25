@@ -1,6 +1,6 @@
 use std::fmt::Display;
 
-use quoted::Quoted;
+use quoted::EscapedString;
 
 use crate::Shim;
 
@@ -21,14 +21,14 @@ impl Display for Shim {
 
 struct Line<'a> {
     key: &'static str,
-    value: Quoted<'a>,
+    value: EscapedString<'a>,
 }
 
 impl<'a> Line<'a> {
     fn from_shim(shim: &'a Shim) -> Vec<Self> {
         let mut lines = vec![Line {
             key: "path",
-            value: shim.path().to_string_lossy().into(),
+            value: EscapedString::from(shim.path().to_string_lossy()).quoted(),
         }];
 
         if !shim.args().is_empty() {
