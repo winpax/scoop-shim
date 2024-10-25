@@ -62,6 +62,7 @@ impl Shim {
     }
 }
 
+#[inline]
 /// Parse a [`Shim`] from a string
 ///
 /// # Errors
@@ -70,6 +71,7 @@ pub fn from_str(s: &str) -> Result<Shim, Error> {
     Ok(Shim::from_str(s)?)
 }
 
+#[inline]
 /// Parse a [`Shim`] from a reader
 ///
 /// Note that this collects the reader's data into a string
@@ -88,6 +90,7 @@ pub fn from_reader(reader: &mut impl std::io::Read) -> Result<Shim, Error> {
     from_str(&buf)
 }
 
+#[inline]
 #[must_use]
 /// Serialize a [`Shim`] to a string
 pub fn to_string(shim: &Shim) -> String {
