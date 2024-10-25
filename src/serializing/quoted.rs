@@ -24,6 +24,7 @@ impl<'a> EscapedString<'a> {
         }
     }
 
+    #[allow(dead_code)]
     pub(crate) fn unquoted(self) -> Self {
         Self {
             quoted: false,
