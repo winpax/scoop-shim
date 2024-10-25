@@ -10,9 +10,17 @@ impl Display for Shim {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         let lines = Line::from_shim(self);
 
+        let mut first = true;
+
         for line in lines {
+            // Prevent trailing newlines
+            if !first {
+                Display::fmt(&"\r\n", f)?;
+            }
+
             Display::fmt(&line, f)?;
-            Display::fmt(&"\r\n", f)?;
+
+            first = false;
         }
 
         Ok(())
