@@ -7,9 +7,6 @@ use std::{path::PathBuf, str::FromStr};
 pub enum Error {
     #[error("{0}")]
     ParsingError(#[from] parsing::Error),
-
-    #[error("{0}")]
-    SerializationError(#[from] serializing::Error),
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -34,4 +31,8 @@ impl Shim {
 
 pub fn from_str(s: &str) -> Result<Shim, Error> {
     Ok(Shim::from_str(s)?)
+}
+
+pub fn to_string(shim: &Shim) -> Result<String, Error> {
+    Ok(shim.to_string())
 }

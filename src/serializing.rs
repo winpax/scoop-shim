@@ -2,9 +2,6 @@ use std::{borrow::Cow, fmt::Display};
 
 use crate::Shim;
 
-#[derive(Debug, thiserror::Error)]
-pub enum Error {}
-
 impl Display for Shim {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         let lines = Line::from_shim(self);
