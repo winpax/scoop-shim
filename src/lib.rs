@@ -65,6 +65,8 @@ impl Shim {
 #[inline]
 /// Parse a [`Shim`] from a string
 ///
+/// This is a wrapper around [`Shim::from_str`].
+///
 /// # Errors
 /// Parsing the shim. See [`Error`] for more details.
 pub fn from_str(s: &str) -> Result<Shim, Error> {
@@ -93,6 +95,8 @@ pub fn from_reader(reader: &mut impl std::io::Read) -> Result<Shim, Error> {
 #[inline]
 #[must_use]
 /// Serialize a [`Shim`] to a string
+///
+/// This is a wrapper around [`Shim::to_string`]
 pub fn to_string(shim: &Shim) -> String {
     shim.to_string()
 }
