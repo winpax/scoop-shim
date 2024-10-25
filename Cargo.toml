@@ -1,4 +1,5 @@
 [package]
+description = "A simple parser and serializer for Scoop shims"
 edition = "2021"
 name = "scoop-shims"
 version = "0.1.0"
