@@ -1,0 +1,2 @@
+path = "<SCOOP_PATH>\apps\sfsu-beta\current\sfsu.exe"
+args = search --installed

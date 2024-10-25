@@ -1,0 +1,2 @@
+# Contains no arguments, but path is quoted
+path = "<SCOOP_PATH>\apps\sfsu-beta\current\sfsu.exe"
