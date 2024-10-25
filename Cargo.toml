@@ -7,4 +7,4 @@ repository = "https://github.com/winpax/scoop-shim/tree/trunk"
 version = "0.1.0"
 
 [dependencies]
-thiserror = "1.0.65"
+thiserror = "1.0"
