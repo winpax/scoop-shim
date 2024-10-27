@@ -100,3 +100,12 @@ pub fn from_reader(reader: &mut impl std::io::Read) -> Result<Shim, Error> {
 pub fn to_string(shim: &Shim) -> String {
     shim.to_string()
 }
+
+/// Write the shim to a writer
+///
+/// # Errors
+/// Writing to the writer. See [`std::io::Error`] for more details.
+pub fn to_writer(shim: &Shim, writer: &mut impl std::io::Write) -> Result<(), Error> {
+    write!(writer, "{shim}")?;
+    Ok(())
+}
